@@ -81,22 +81,6 @@
     </dependency>
     <dependency>
       <groupId>com.github.TheBusyBiscuit</groupId>
-      <artifactId>CS-CoreLib</artifactId>
-      <version>6e17183656</version>
-      <scope>provided</scope>
-      <exclusions>
-        <exclusion>
-          <artifactId>cscorelib2</artifactId>
-          <groupId>io.github.thebusybiscuit</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>bstats-bukkit</artifactId>
-          <groupId>org.bstats</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>com.github.TheBusyBiscuit</groupId>
       <artifactId>Slimefun4</artifactId>
       <version>RC-19</version>
       <scope>provided</scope>
