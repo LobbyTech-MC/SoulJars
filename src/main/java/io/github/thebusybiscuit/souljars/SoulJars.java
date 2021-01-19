@@ -52,9 +52,9 @@ public class SoulJars extends JavaPlugin implements Listener, SlimefunAddon {
             }
         }
 
-        emptyJar = new SlimefunItemStack("SOUL_JAR", JAR_TEXTURE, "&bSoul Jar &7(Empty)", "", "&rKill a Mob while having this", "&rItem in your Inventory to bind", "&rtheir Soul to this Jar");
-        category = new Category(new NamespacedKey(this, "soul_jars"), new CustomItem(emptyJar, "&bSoul Jars", "", "&a> Click to open"));
-        recipeType = new RecipeType(new NamespacedKey(this, "mob_killing"), new CustomItem(Material.DIAMOND_SWORD, "&cKill the specified Mob", "&cwhile having an empty Soul Jar", "&cin your Inventory"));
+        emptyJar = new SlimefunItemStack("SOUL_JAR", JAR_TEXTURE, "&b灵魂储罐&7(空)", "", "&r把它放在背包", "&r击杀怪物", "&r获得他们的灵魂");
+        category = new Category(new NamespacedKey(this, "soul_jars"), new CustomItem(emptyJar, "&b灵魂储罐", "", "&a> 点击打开"));
+        recipeType = new RecipeType(new NamespacedKey(this, "mob_killing"), new CustomItem(Material.DIAMOND_SWORD, "&c把&b灵魂储罐&7(空)&c放在背包", "&c击杀指定生物"));
 
         new SlimefunItem(category, emptyJar, RecipeType.ANCIENT_ALTAR, new ItemStack[] { SlimefunItems.EARTH_RUNE, new ItemStack(Material.SOUL_SAND), SlimefunItems.WATER_RUNE, new ItemStack(Material.SOUL_SAND), SlimefunItems.NECROTIC_SKULL, new ItemStack(Material.SOUL_SAND), SlimefunItems.AIR_RUNE, new ItemStack(Material.SOUL_SAND), SlimefunItems.FIRE_RUNE }, new CustomItem(emptyJar, 3)).register(this);
         new JarsListener(this);
@@ -84,19 +84,19 @@ public class SoulJars extends JavaPlugin implements Listener, SlimefunAddon {
         }
 
         // @formatter:off
-        SlimefunItemStack jarItem = new SlimefunItemStack(type.name() + "_SOUL_JAR", JAR_TEXTURE, "&cSoul Jar &7(" + name + ")", "", "&7Infused Souls: &e1");
+        SlimefunItemStack jarItem = new SlimefunItemStack(type.name() + "_SOUL_JAR", JAR_TEXTURE, "&c灵魂储罐&7(" + name + ")", "", "&7存储的灵魂: &e1");
         SlimefunItem jar = new UnplaceableBlock(category, jarItem, recipeType, 
         new ItemStack[] { null, null, null, emptyJar, null, new CustomItem(mobEgg, "&rKill " + souls + "x " + name), null, null, null });
         jar.register(this);
 
-        SlimefunItemStack filledJarItem = new SlimefunItemStack("FILLED_" + type.name() + "_SOUL_JAR", JAR_TEXTURE, "&cFilled Soul Jar &7(" + name + ")", "", "&7Infused Souls: &e" + souls);
+        SlimefunItemStack filledJarItem = new SlimefunItemStack("FILLED_" + type.name() + "_SOUL_JAR", JAR_TEXTURE, "&c装满的灵魂储罐&7(" + name + ")", "", "&7存储的灵魂: &e" + souls);
         SlimefunItem filledJar = new FilledJar(category, filledJarItem, recipeType, 
-        new ItemStack[] { null, null, null, emptyJar, null, new CustomItem(mobEgg, "&rKill " + souls + "x " + name), null, null, null });
+        new ItemStack[] { null, null, null, emptyJar, null, new CustomItem(mobEgg, "&r击杀 " + souls + "x " + name), null, null, null });
         filledJar.register(this);
 
         BrokenSpawner brokenSpawner = SlimefunItems.BROKEN_SPAWNER.getItem(BrokenSpawner.class);
 
-        SlimefunItemStack spawnerItem = new SlimefunItemStack(type.toString() + "_BROKEN_SPAWNER", Material.SPAWNER, "&cBroken Spawner &7(" + name + ")");
+        SlimefunItemStack spawnerItem = new SlimefunItemStack(type.toString() + "_BROKEN_SPAWNER", Material.SPAWNER, "&c已损坏的刷怪笼&7(" + name + ")");
         new SlimefunItem(category, spawnerItem, RecipeType.ANCIENT_ALTAR, 
         new ItemStack[] { new ItemStack(Material.IRON_BARS), SlimefunItems.EARTH_RUNE, new ItemStack(Material.IRON_BARS), SlimefunItems.EARTH_RUNE, filledJarItem, SlimefunItems.EARTH_RUNE, new ItemStack(Material.IRON_BARS), SlimefunItems.EARTH_RUNE, new ItemStack(Material.IRON_BARS) }, 
         brokenSpawner.getItemForEntityType(type)).register(this);
