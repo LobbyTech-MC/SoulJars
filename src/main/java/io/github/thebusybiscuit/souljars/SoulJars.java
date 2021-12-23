@@ -47,8 +47,8 @@ public class SoulJars extends JavaPlugin implements Listener, SlimefunAddon {
         }
 
         emptyJar = new SlimefunItemStack("SOUL_JAR", JAR_TEXTURE, "&b灵魂储罐&7(空)", "", "&r当它在你的背包里时", "&r你击杀怪物可以获得", "&r灵魂派");
-        itemGroup = new ItemGroup(new NamespacedKey(this, "soul_jars"), new CustomItemStack(emptyJar, "&b灵魂储罐", "", "&a> 点击打开"));
-        recipeType = new RecipeType(new NamespacedKey(this, "mob_killing"), new CustomItemStack(Material.DIAMOND_SWORD, "&c击杀指定怪物", "&c把&b灵魂储罐&7(空)&c放在背包", "&c击杀指定生物"));
+        itemGroup = new ItemGroup(new NamespacedKey(this, "soul_jars"), new CustomItemStack(emptyJar, "&b灵魂储罐附属", "", "&a> 点击打开"));
+        recipeType = new RecipeType(new NamespacedKey(this, "mob_killing"), new CustomItemStack(Material.DIAMOND_SWORD, "&c把&b灵魂储罐&7(空)&c放在背包", "&c击杀特定生物", "&c获得对应生物的灵魂储罐"));
 
         new SlimefunItem(itemGroup, emptyJar, RecipeType.ANCIENT_ALTAR, new ItemStack[] { SlimefunItems.EARTH_RUNE, new ItemStack(Material.SOUL_SAND), SlimefunItems.WATER_RUNE, new ItemStack(Material.SOUL_SAND), SlimefunItems.NECROTIC_SKULL, new ItemStack(Material.SOUL_SAND), SlimefunItems.AIR_RUNE, new ItemStack(Material.SOUL_SAND), SlimefunItems.FIRE_RUNE }, new CustomItemStack(emptyJar, 3)).register(this);
         new JarsListener(this);
@@ -78,12 +78,12 @@ public class SoulJars extends JavaPlugin implements Listener, SlimefunAddon {
         }
 
         // @formatter:off
-        SlimefunItemStack jarItem = new SlimefunItemStack(type.name() + "_SOUL_JAR", JAR_TEXTURE, "&c灵魂储罐&7(" + name + ")", "", "&7注入灵魂: &e1");
+        SlimefunItemStack jarItem = new SlimefunItemStack(type.name() + "_SOUL_JAR", JAR_TEXTURE, "&c灵魂储罐&7(" + name + ")", "", "&7注入的灵魂: &e1");
         SlimefunItem jar = new UnplaceableBlock(itemGroup, jarItem, recipeType,
         new ItemStack[] { null, null, null, emptyJar, null, new CustomItemStack(mobEgg, "&r击杀 " + souls + "x " + name), null, null, null });
         jar.register(this);
 
-        SlimefunItemStack filledJarItem = new SlimefunItemStack("FILLED_" + type.name() + "_SOUL_JAR", JAR_TEXTURE, "&c装满的灵魂储罐&7(" + name + ")", "", "&7存储的灵魂: &e" + souls);
+        SlimefunItemStack filledJarItem = new SlimefunItemStack("FILLED_" + type.name() + "_SOUL_JAR", JAR_TEXTURE, "&c灵魂储罐&7(" + name + ")", "", "&7注入的灵魂: &e" + souls);
         SlimefunItem filledJar = new FilledJar(itemGroup, filledJarItem, recipeType,
         new ItemStack[] { null, null, null, emptyJar, null, new CustomItemStack(mobEgg, "&r击杀 " + souls + "x " + name), null, null, null });
         filledJar.register(this);
