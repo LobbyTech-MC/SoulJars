@@ -48,7 +48,7 @@ public class SoulJars extends JavaPlugin implements Listener, SlimefunAddon {
 
         emptyJar = new SlimefunItemStack("SOUL_JAR", JAR_TEXTURE, "&b灵魂储罐&7(空)", "", "&r当它在你的背包里时", "&r你击杀怪物可以获得", "&r灵魂派");
         itemGroup = new ItemGroup(new NamespacedKey(this, "soul_jars"), new CustomItemStack(emptyJar, "&b灵魂储罐附属", "", "&a> 点击打开"));
-        recipeType = new RecipeType(new NamespacedKey(this, "mob_killing"), new CustomItemStack(Material.DIAMOND_SWORD, "&c把&b灵魂储罐&7(空)&c放在背包", "&c击杀特定生物", "&c获得对应生物的灵魂储罐"));
+        recipeType = new RecipeType(new NamespacedKey(this, "mob_killing"), new CustomItemStack(Material.DIAMOND_SWORD, "&c把&b灵魂储罐&7(空)&c放在背包", "&c击杀特定生物", "&c注入对应生物的灵魂"));
 
         new SlimefunItem(itemGroup, emptyJar, RecipeType.ANCIENT_ALTAR, new ItemStack[] { SlimefunItems.EARTH_RUNE, new ItemStack(Material.SOUL_SAND), SlimefunItems.WATER_RUNE, new ItemStack(Material.SOUL_SAND), SlimefunItems.NECROTIC_SKULL, new ItemStack(Material.SOUL_SAND), SlimefunItems.AIR_RUNE, new ItemStack(Material.SOUL_SAND), SlimefunItems.FIRE_RUNE }, new CustomItemStack(emptyJar, 3)).register(this);
         new JarsListener(this);
